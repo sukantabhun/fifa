@@ -100,7 +100,7 @@ def index(request):
     return render(request,'Index.html', context)
 
 def Custom(request):
-    return HttpResponse('this is Custom')
+    return render(request,'custom_team.html')
 def DashBoard(request):
     return HttpResponse('this is DashBoard')
 def LiveMatch(request):

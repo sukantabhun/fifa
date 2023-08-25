@@ -219,7 +219,12 @@
     background-size: cover;
     height: 100vh;
 }
-
+.background-custom {
+    background-image: url('../images/bg-custom.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+}
 .fade-in span {
     opacity: 0;
     display: inline-block;
