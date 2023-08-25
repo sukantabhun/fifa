@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sports Data</title>
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+          crossorigin="anonymous">
+    <style>
+        body {
+            background-color: #f0f0f0;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        pre {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            padding: 15px;
+            overflow: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 class="mb-4">Sports Data</h2>
+        <pre id="response-container"></pre>
+    </div>
+
+    <script>
+        const apiKey = '4c863738bemshc9d70d81c6d2196p1b1c80jsn36fa36d2cdfd';
+        const apiUrl = 'https://odds.p.rapidapi.com/v4/sports';
+        const headers = new Headers({
+            'X-RapidAPI-Key': apiKey,
+            'X-RapidAPI-Host': 'odds.p.rapidapi.com'
+        });
+
+        const responseContainer = document.getElementById('response-container');
+
+        fetch(apiUrl, { headers })
+            .then(response => response.json())
+            .then(data => {
+                responseContainer.textContent = JSON.stringify(data, null, 2);
+            })
+            .catch(error => {
+                console.error('Error fetching data:', error);
+            });
+    </script>
+</body>
+</html>

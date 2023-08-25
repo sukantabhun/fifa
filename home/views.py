@@ -96,7 +96,7 @@ def Custom(request):
     return render(request,'custom_team.html')
 def Leaderboard(request):
     return render(request,'Leaderboard.html')
-def LiveMatch(request):
+def Prediction(request):
     return HttpResponse('this is LiveMatch')
 def MatchScore(request):
-    return HttpResponse('this is MatchScore')
+    return HttpResponse(request,'matchscore.html')
