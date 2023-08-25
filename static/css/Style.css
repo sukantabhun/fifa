@@ -1,0 +1,240 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Bree+Serif&family=Caveat:wght@400;700&family=Lobster&family=Monoton&family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display+SC:ital,wght@0,400;0,700;1,700&family=Playfair+Display:ital,wght@0,400;0,700;1,700&family=Roboto:ital,wght@0,400;0,700;1,400;1,700&family=Source+Sans+Pro:ital,wght@0,400;0,700;1,700&family=Work+Sans:ital,wght@0,400;0,700;1,700&display=swap');
+
+
+.margin-top-prdict{
+    margin-top: 40px;
+}
+.background-color{
+    background-color: black;
+    height: 100vh;
+    background-size:cover;
+}
+.text-right{
+    text-align: right;
+}
+.navbar-brand{
+    color: #3498db;
+}
+.nav-item{
+    padding-right: 25px;
+}
+.nav-link{
+    color: black;
+}
+.navbar-color{
+    background-color: white;
+}
+.btn-color{
+    color: #3498db;
+    border-color: #3498db;
+    font-weight: bold;
+    padding: 15px;
+    width: 150px;
+    border-width: 2px;
+}
+.graph-design{
+    border-radius: 25px;
+    box-shadow: 5px 5px 15px cyan;
+}
+.card-1{
+    border-radius: 15px;
+}
+.heading{
+    text-align: center;
+    color: #3498db;
+    font-family: cursive;
+    font-size: 60px;   
+}
+.place-holder{
+    width: 500px;
+    height: 500px;
+    background-color: black;
+    border-radius: 25px;
+}
+.loading-spinner {
+    background-color: transparent;
+    width: 70px;
+    height: 70px;
+    animation: spin 1s linear infinite;
+    margin: 100px auto;
+    box-shadow: none;
+  }
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+    
+  }
+  .loading-soccer {
+    text-align: center;
+  }
+  
+  .fas.fa-futbol {
+    font-size: 40px; 
+    color: #3498db; 
+    animation: spin 1s linear infinite;
+  }
+
+.carousel-control-prev,
+.carousel-control-next {
+    background-color: transparent;
+    border: none;
+}
+.predictor-bg{
+    background-image: url("../images/bgImg.jpg");
+    height: 100vh;
+    background-size:cover;
+}
+.carousel-inner {
+    height: 50%;
+}
+.container {
+    width: 50px;
+}
+.banner-section-bg-container {
+    height: 100vh;
+    background-size: cover;
+}
+
+.banner-heading {
+    color: white;
+    font-family: "Roboto";
+    font-size: 65px;
+    font-weight: 500;
+}
+
+.banner-caption {
+    color: #f5f7fa;
+    font-family: "Roboto";
+    font-size: 24px;
+    font-weight: 300;
+}
+
+.custom-button {
+    color: white;
+    background-color: #3498db;
+    width: 150px;
+    height: 60px;
+    border-width: 0;
+    border-radius: 8px;
+    margin-right: 10px;
+}
+
+.custom-outline-button {
+    color: white;
+    background-color: transparent;
+    width: 150px;
+    height: 60px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: white;
+    border-radius: 8px;
+}
+.menu-section-heading {
+    color: #183b56;
+    font-family: "Roboto";
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.menu-item-image {
+    border-radius: 16px;
+}
+
+.menu-card-title {
+    color: #3498db;
+    font-family: "Roboto";
+    font-size: 18px;
+    font-weight: 500;
+    margin-top: 24px;
+}
+
+.menu-item-link {
+    color: #3498db;
+    font-family: "Roboto";
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.menu-item-card {
+    border-radius: 16px;
+}
+
+
+.card-carousal {
+    height: 30%;
+    width: 75%; 
+    border-radius: 25px;
+    overflow: hidden;
+    margin: auto;
+}
+
+.carousel-inner {
+    height: 100%; 
+}
+
+.carousel-item {
+    background-size: cover;
+    height: 100%; 
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+
+    color: #3498db;
+    font-size: 30px;
+}
+
+.bg-1{
+    background-image: url('https://wallpaperaccess.com/full/3491893.jpg');
+    background-size:cover;
+    height: 75vh;
+    width: 100%;
+    text-align: center;
+}
+.bg-2{
+    background-image: url('https://img.olympicchannel.com/images/image/private/t_s_w1340/t_s_16_9_g_auto/f_auto/primary/cfhhzir28lrfmr5lgyxk');
+    background-size: cover;
+    width: 100%;
+    height: 75vh;
+    text-align: center;
+}
+.bg-3{
+    background-image: url('https://wallpapercave.com/wp/wp3109791.jpg');
+    background-size: cover;
+    width: 100%;
+    height: 75vh;
+    text-align: center;
+    object-fit: cover;
+}
+
+
+.background {
+    background-image: url('../images/crbg.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+}
+
+.fade-in span {
+    opacity: 0;
+    display: inline-block;
+    transform-origin: bottom;
+    animation: fadeInWordAnimation 2s forwards;
+}
+
+@keyframes fadeInWordAnimation {
+    0% {
+        opacity: 0;
+        transform: scaleY(0);
+    }
+    100% {
+        opacity: 1;
+        transform: scaleY(1);
+    }
+}
+
