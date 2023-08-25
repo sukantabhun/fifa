@@ -6,9 +6,9 @@ import numpy as np
 import pandas as pd
 
 
-def team_score_prediction():
-    player_data = pd.read_csv('static/data/FIFA22_official_player_data.csv')
-    team_data = pd.read_csv('static/data/FIFA - 2022.csv')
+def team_score_prediction(request):
+    player_data = pd.read_csv('../data/FIFA22_official_player_data.csv')
+    team_data = pd.read_csv('../data/FIFA - 2022.csv')
 
     player_data = player_data.replace('United States', 'USA')
     player_data = player_data.replace('Korea Republic', 'South Korea')
@@ -84,8 +84,7 @@ def team_score_prediction():
         'predicted_team': predicted_team,
     }
     print(img_base64)
-    return render( 'index.html', context)
-team_score_prediction()
+    return render(request,'index.html', context)
 def index(request):
     context = {
         'variable': "this is sent",
