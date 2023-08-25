@@ -1,0 +1,194 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+            integrity="..."></script>
+        <script
+            src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+            integrity="..."></script>
+        <script
+            src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+            integrity="..." crossorigin="anonymous"></script>
+
+        <link rel="stylesheet"
+            href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+            integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+            crossorigin="anonymous" />
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+            crossorigin="anonymous"></script>
+        <script
+            src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+            integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+            crossorigin="anonymous"></script>
+        <script
+            src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+            integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+            crossorigin="anonymous"></script>
+        <script src="https://kit.fontawesome.com/5f59ca6ad3.js"
+            crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Leaderboard | FifaNation</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-image:url('{% static "images/3225021.jpg" %}');
+      background-size:cover;
+      width:100vw;
+    }
+
+    .leaderboard {
+      max-width: 600px;
+      margin: 50px auto;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+    }
+
+    .leaderboard-header {
+      background-color: #333;
+      color: #fff;
+      padding: 10px;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+    }
+
+    .leaderboard-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .leaderboard-table th, .leaderboard-table td {
+      padding: 15px;
+      border-bottom: 1px solid #ddd;
+      text-align: center;
+    }
+
+    .leaderboard-table th {
+      background-color: #333;
+      color: #fff;
+    }
+
+    .leaderboard-table tr:nth-child(even) {
+      background-color: #f0f0f0;
+    }
+
+    .gold {
+      background-color: gold;
+      font-weight: bold;
+    }
+
+    .silver {
+      background-color: silver;
+      font-weight: bold;
+    }
+
+    .bronze {
+      background-color: #cd7f32;
+      color: #fff;
+      font-weight: bold;
+    }
+    .nav-item{
+        padding-left:10px;
+    }
+  </style>
+</head>
+<body>
+
+        <nav
+            class="navbar navbar-expand-lg bg-body-tertiary navbar-dark bg-bg-transparent fixed-top navbar-color">
+            <div class="container-fluid">
+                <a class="navbar-brand" style="color:#3498db">FifaNation</a>
+                <button class="navbar-toggler" type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#navbarNavDropdown"
+                    aria-controls="navbarNavDropdown"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div
+                    class="collapse text-black navbar-collapse d-flex flex-row justify-content-end"
+                    id="navbarNavDropdown">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link text-white" aria-current="page"
+                                href="/">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="/DashBoard">Leaderboard</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="/Custom">Custom</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="/LiveMatch">Live Match</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="/MatchScore">Match Score</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+  <div class="leaderboard " style='margin-top:12%;' id="leaderboard-container">
+    <div class="leaderboard-header" style='text-align:center;'>
+      <h2>World Cup Leaderboard</h2>
+    </div>
+    <table class="leaderboard-table" id="leaderboard-table">
+      <thead>
+        <tr>
+          <th>Position</th>
+          <th>Team</th>
+          <th>Wins</th>
+        </tr>
+      </thead>
+      <tbody id="leaderboard-body">
+        <!-- Table rows will be dynamically added here using JavaScript -->
+      </tbody>
+    </table>
+  </div>
+
+  <script>
+    const worldCupWinners = {
+    "Germany": 7,
+      "Brazil": 6,
+      "Italy": 4,
+      "Uruguay": 2,
+      "Argentina": 2,
+      "France": 2,
+      "England": 1,
+      "Spain": 1,
+    };
+
+    const leaderboardTable = document.getElementById('leaderboard-table');
+    const leaderboardBody = document.getElementById('leaderboard-body');
+
+    Object.entries(worldCupWinners).forEach(([team, wins], index) => {
+      const row = leaderboardBody.insertRow();
+      const positionCell = row.insertCell(0);
+      const teamCell = row.insertCell(1);
+      const winsCell = row.insertCell(2);
+
+      positionCell.textContent = index + 1;
+      teamCell.textContent = team;
+      winsCell.textContent = wins;
+      if (index === 0) {
+        row.classList.add('gold');
+      } else if (index === 1) {
+        row.classList.add('silver');
+      } else if (index === 2) {
+        row.classList.add('bronze');
+      } else {
+        row.classList.add('bg-light');
+      }
+    });
+    leaderboardTable.style.display = 'table'; // Show leaderboard table
+  </script>
+</body>
+</html>

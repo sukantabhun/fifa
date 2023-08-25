@@ -243,3 +243,66 @@
     }
 }
 
+
+.leaderboard {
+    max-width: 600px;
+    margin: 50px auto;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+  }
+
+  .leaderboard-header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+
+  .leaderboard-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .leaderboard-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    position: relative;
+  }
+
+  .position {
+    width: 30px;
+    text-align: center;
+    z-index: 1;
+  }
+
+  .username {
+    flex: 1;
+    background-color: #f0f0f0;
+    padding: 10px;
+    margin-left: 15px;
+    border-radius: 10px;
+    position: relative;
+    z-index: 0;
+  }
+
+  .score {
+    width: 60px;
+    text-align: center;
+    z-index: 1;
+  }
+
+  .step {
+    position: absolute;
+    left: -10px;
+    top: 0;
+    bottom: 0;
+    width: 10px;
+    background-color: #333;
+    z-index: 0;
+  }

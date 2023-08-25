@@ -92,17 +92,10 @@ def index(request):
     }
     return render(request, 'index.html', context)
 
-def index(request):
-    context = {
-        'variable':"this is sent",
-        'variable2':"this is sent 2"
-    }
-    return render(request,'Index.html', context)
-
 def Custom(request):
     return render(request,'custom_team.html')
-def DashBoard(request):
-    return HttpResponse('this is DashBoard')
+def Leaderboard(request):
+    return render(request,'Leaderboard.html')
 def LiveMatch(request):
     return HttpResponse('this is LiveMatch')
 def MatchScore(request):
