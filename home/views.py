@@ -99,4 +99,4 @@ def Leaderboard(request):
 def Prediction(request):
     return render(request,'Prediction.html')
 def MatchScore(request):
-    return HttpResponse(request,'matchscore.html')
+    return render(request,'matchscore.html')
