@@ -7,15 +7,18 @@ import pandas as pd
 
 player_data = pd.read_csv('static\data\FIFA22_official_player_data.csv')
 
-def Player_Score(team):
-    data = player_data[player_data['Nationality']==team]
-    data = data.loc[:,'Crossing':'DefensiveAwareness'].select_dtypes(exclude = 'object')
-    score = 0
-    for index, row in data.iterrows():
-        player_score = row.sum()
-        score = score + (player_score/3400)
-    score = score / data.shape[0]
-    return round(score * 50,2)
+def GK_Score(Name):
+    data = player_data[player_data['Name'] == Name]
+    data = data.loc[:, 'GKDiving':'GKReflexes'].select_dtypes(exclude='object')
+    score = data.sum().sum()
+    return round(score/5, 2)
+
+def Player_Score(Name):
+    data = player_data[player_data['Name']==Name]
+    data = data.loc[:,'Crossing':'SlidingTackle'].select_dtypes(exclude = 'object')
+    score = data.sum().sum()
+    return round(score/29,2)
+
 def index(request):
     context = {
         'variable': "this is sent",
@@ -62,18 +65,18 @@ def Custom(request):
         if ("" in teamA_inputs) or ("" in teamB_inputs):
             return render(request, 'custom_team.html', {'team_prediction': 'Players Not Selected'})
         else:
-            TeamAScore = 0
-            for row in teamA_inputs.iterrows():
-                ps = Player_Score(row['Name'])
+            TeamAScore = GK_Score(teamA_inputs[0])
+            for row in teamA_inputs[1:]:
+                ps = Player_Score(row)
                 TeamAScore+=ps
-            TeamBScore = 0
-            for row in teamB_inputs.iterrows():
-                ps = Player_Score(row['Name'])
+            TeamBScore = GK_Score(teamB_inputs[0])
+            for row in teamB_inputs[1:]:
+                ps = Player_Score(row)
                 TeamBScore+=ps
             if (TeamAScore > TeamBScore):
                 output = "Team A Wins"
             elif (TeamAScore < TeamBScore):
-                output = "Team A Wins"
+                output = "Team B Wins"
             else:
                 output = "Draw"
             return render(request, 'custom_team.html', {'team_prediction': output})
