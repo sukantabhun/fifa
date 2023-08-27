@@ -11,7 +11,7 @@ urlpatterns = [
     path("MatchScore",views.MatchScore,name='MatchScore'),
     path("Leaderboard",views.Leaderboard,name='Leaderboard'),  
     path("Custom",views.Custom,name='Custom'),
-    path("Prediction",views.Prediction,name='Prediction')   
+    path("Prediction",views.Prediction,name='Prediction')
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

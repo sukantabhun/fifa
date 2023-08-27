@@ -4,14 +4,14 @@
 
     <head>
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-            integrity="..."></script>
-        <script
-            src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
-            integrity="..."></script>
-        <script
-            src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
-            integrity="..." crossorigin="anonymous"></script>
-
+            integrity="..."
+            crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+            integrity="..."
+            crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+            integrity="..."
+            crossorigin="anonymous"></script>
         <link rel="stylesheet"
             href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
             integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
@@ -29,7 +29,6 @@
             crossorigin="anonymous"></script>
         <script src="https://kit.fontawesome.com/5f59ca6ad3.js"
             crossorigin="anonymous"></script>
-        <script src='{% static 'js/Script.js' %}'></script>
         <link rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
         <title> Prediction | FifaNation</title>
@@ -123,18 +122,20 @@
                 
                 <div class='mt-5 background-custom-image d-flex flex-column justify-content-center'>
                     <div id ='teamA' class='text-center'>
-                        <input type="text" name="fifa" list="gk" placeholder = 'Goal Keeper'class='input-selector input-box mb5'>
+                        <form method="post" action="{% url 'Custom' %}">
+                            {% csrf_token %}
+                        <input type="text" name="teamA_gk" list="gk" placeholder = 'Goal Keeper'class='input-selector input-box mb5'>
                             <datalist id="gk">
                             
                             </datalist>
                         <div class='mb5'>
-                            <input type="text" name="fifa" list="back" placeholder = 'Back'class='input-selector input-box mr-5'>
+                            <input type="text" name="teamA_back1" list="back" placeholder = 'Back'class='input-selector input-box mr-5'>
                             
-                            <input type="text" name="fifa" list="back" placeholder = 'Back'class='input-selector input-box mr-5'>
+                            <input type="text" name="teamA_back2" list="back" placeholder = 'Back'class='input-selector input-box mr-5'>
                             
-                            <input type="text" name="fifa" list="back" placeholder = 'Back'class='input-selector input-box mr-5'>
+                            <input type="text" name="teamA_back3" list="back" placeholder = 'Back'class='input-selector input-box mr-5'>
                             
-                            <input type="text" name="fifa" list="back" placeholder = 'Back'class='input-selector input-box '>
+                            <input type="text" name="teamA_back4" list="back" placeholder = 'Back'class='input-selector input-box '>
                             
                             <datalist id="back">
                             
@@ -142,41 +143,41 @@
                         </div>
 
                         <div class='mb5'>
-                            <input type="text" name="fifa" list="mid" placeholder = 'Mid Fielders'class='input-selector input-box mr-5'>
+                            <input type="text" name="teamA_mid1" list="mid" placeholder = 'Mid Fielders'class='input-selector input-box mr-5'>
                             
-                            <input type="text" name="fifa" list="mid" placeholder = 'Mid Fielders'class='input-selector input-box mr-5'>
+                            <input type="text" name="teamA_mid2" list="mid" placeholder = 'Mid Fielders'class='input-selector input-box mr-5'>
                             
-                            <input type="text" name="fifa" list="mid" placeholder = 'Mid Fielders'class='input-selector input-box mr-5'>
+                            <input type="text" name="teamA_mid3" list="mid" placeholder = 'Mid Fielders'class='input-selector input-box mr-5'>
                             
-                            <input type="text" name="fifa" list="mid" placeholder = 'Mid Fielders'class='input-selector input-box '>
+                            <input type="text" name="teamA_mid4" list="mid" placeholder = 'Mid Fielders'class='input-selector input-box '>
                             <datalist id="mid">
                             
                             </datalist>
                         </div>
 
                         <div class='mt-5'>
-                            <input type="text" name="fifa" list="fwd" placeholder = 'Forwards'class='input-selector input-box mr-5'>
+                            <input type="text" name="teamA_fwd1" list="fwd" placeholder = 'Forwards'class='input-selector input-box mr-5'>
                             
-                            <input type="text" name="fifa" list="fwd" placeholder = 'Forwards'class='input-selector input-box mr-5'>
+                            <input type="text" name="teamA_fwd2" list="fwd" placeholder = 'Forwards'class='input-selector input-box mr-5'>
                             
                             <datalist id="fwd">
                             
                             </datalist>
-                        </div>
+                        </div>  
                     </div>
                 
                     <div class='mr-5 ml-5 text-border p-2 text-center' style='margin:55%;'>
-                        <h1 class='heading'>The Winner of Team A vs Team B:</br><span id='PredictionOutput'>Team 1</span></h1>
-                        <center><button class='btn btn-primary'>GO!!</button></center>
+                        <h1 class='heading'>The Winner of Team A vs Team B:</br><span id="PredictionOutputA">{{ team_prediction }}</span></h1>
+                        <center><button type='submit' class='btn btn-primary'>GO!!</button></center>
                     </div>
 
 
                     <div id ='teamB' class='d-flex flex-column justify-content-end'>
                         <div class='text-center p-5'>
                             <div class='mb5'>
-                                <input type="text" name="fifa" list="fwd" placeholder = 'Forwards'class='input-selector input-box mr-5'>
+                                <input type="text" name="teamB_fwd1" list="fwd" placeholder = 'Forwards'class='input-selector input-box mr-5'>
                                 
-                                <input type="text" name="fifa" list="fwd" placeholder = 'Forwards'class='input-selector input-box mr-5'>
+                                <input type="text" name="teamB_fwd2" list="fwd" placeholder = 'Forwards'class='input-selector input-box mr-5'>
                                 
                                 <datalist id="fwd">
                                 
@@ -185,13 +186,13 @@
 
                     
                             <div class='mb5'>
-                                <input type="text" name="fifa" list="mid" placeholder = 'Mid Fielders'class='input-selector input-box mr-5'>
+                                <input type="text" name="teamB_mid1" list="mid" placeholder = 'Mid Fielders'class='input-selector input-box mr-5'>
                                 
-                                <input type="text" name="fifa" list="mid" placeholder = 'Mid Fielders'class='input-selector input-box mr-5'>
+                                <input type="text" name="teamB_mid2" list="mid" placeholder = 'Mid Fielders'class='input-selector input-box mr-5'>
                                 
-                                <input type="text" name="fifa" list="mid" placeholder = 'Mid Fielders'class='input-selector input-box mr-5'>
+                                <input type="text" name="teamB_mid3" list="mid" placeholder = 'Mid Fielders'class='input-selector input-box mr-5'>
                                 
-                                <input type="text" name="fifa" list="mid" placeholder = 'Mid Fielders'class='input-selector input-box '>
+                                <input type="text" name="teamB_mid4" list="mid" placeholder = 'Mid Fielders'class='input-selector input-box '>
                                 <datalist id="mid">
                                 
                                 </datalist>
@@ -199,23 +200,23 @@
 
                     
                             <div  class='mb5'>
-                                <input type="text" name="fifa" list="back" placeholder = 'Back'class='input-selector input-box mr-5'>
+                                <input type="text" name="teamB_back1" list="back" placeholder = 'Back'class='input-selector input-box mr-5'>
                                 
-                                <input type="text" name="fifa" list="back" placeholder = 'Back'class='input-selector input-box mr-5'>
+                                <input type="text" name="teamB_back2" list="back" placeholder = 'Back'class='input-selector input-box mr-5'>
                                 
-                                <input type="text" name="fifa" list="back" placeholder = 'Back'class='input-selector input-box mr-5'>
+                                <input type="text" name="teamB_back3" list="back" placeholder = 'Back'class='input-selector input-box mr-5'>
                                 
-                                <input type="text" name="fifa" list="back" placeholder = 'Back'class='input-selector input-box '>
+                                <input type="text" name="teamB_back4" list="back" placeholder = 'Back'class='input-selector input-box '>
                                 
                                 <datalist id="back">
                                 
                                 </datalist>
                             </div>
 
-                            <input type="text" name="fifa" list="gk" placeholder = 'Goal Keeper'class='input-selector input-box'>
+                            <input type="text" name="teamB_gk" list="gk" placeholder = 'Goal Keeper'class='input-selector input-box'>
                             <datalist id="gk">
                             </datalist>
-
+                        </form>
                     </div>
                 </div>
                 
