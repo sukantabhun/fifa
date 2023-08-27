@@ -5,12 +5,24 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
+player_data = pd.read_csv('static\data\FIFA22_official_player_data.csv')
+
+def Player_Score(team):
+    data = player_data[player_data['Nationality']==team]
+    data = data.loc[:,'Crossing':'DefensiveAwareness'].select_dtypes(exclude = 'object')
+    score = 0
+    for index, row in data.iterrows():
+        player_score = row.sum()
+        score = score + (player_score/3400)
+    score = score / data.shape[0]
+    return round(score * 50,2)
 def index(request):
     context = {
         'variable': "this is sent",
         'variable2': "this is sent 2"
     }
     return render(request, 'index.html', context)
+
 
 from django.shortcuts import render
 
@@ -44,10 +56,27 @@ def Custom(request):
         teamB_fwd2 = request.POST.getlist('teamB_fwd2')
 
         teamB_inputs = [teamB_gk]+teamB_back1+teamB_back2+teamB_back3+teamB_back4+teamB_mid1+teamB_mid2+teamB_mid3+teamB_mid4+teamB_fwd1+teamB_fwd2
+
+
+
         if ("" in teamA_inputs) or ("" in teamB_inputs):
             return render(request, 'custom_team.html', {'team_prediction': 'Players Not Selected'})
         else:
-            return render(request, 'custom_team.html', {'team_prediction': teamA_inputs})
+            TeamAScore = 0
+            for row in teamA_inputs.iterrows():
+                ps = Player_Score(row['Name'])
+                TeamAScore+=ps
+            TeamBScore = 0
+            for row in teamB_inputs.iterrows():
+                ps = Player_Score(row['Name'])
+                TeamBScore+=ps
+            if (TeamAScore > TeamBScore):
+                output = "Team A Wins"
+            elif (TeamAScore < TeamBScore):
+                output = "Team A Wins"
+            else:
+                output = "Draw"
+            return render(request, 'custom_team.html', {'team_prediction': output})
     else:
         return render(request, 'custom_team.html',{'team_prediction': 'Select Players'})
 
