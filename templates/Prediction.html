@@ -40,10 +40,6 @@
                 height: 100vh;
                 background-size:cover;
             }
-            .img{
-                height: 100%;
-                width: 50%;
-            }
             .heading{
                 color:white;
                 font-size:36px;
@@ -54,6 +50,9 @@
             .text-border{
                 background-color: rgba(0, 0, 0, 0.5);
                 border-radius:25px; 
+            }
+            .img{
+                margin-top:50px;
             }
         </style>
     </head>
@@ -98,16 +97,16 @@
                 </nav>
             
                 <div id="predictorSection">
-                    <div class="predictor-bg ">
+                    <div class="predictor-bg d-flex flex-column justify-content-center">
                             <div
-                                class='d-flex flex-row flex-align-center text-center h-100'
+                                class='d-flex flex-column flex-align-center text-center'
                                 id="mainContainer">
                                 <div class="card-1 bg-blacktext-center">
                                     <center>
-                                    <div style='padding-top:10%;margin-left:auto;' class='text-center'>
-                                        <img src="/static/images/graph.png" alt="Team Score Graph" class='img'>
-                                        <div class='mt-5 text-border p-2'>
-                                            <h1 class='heading'>As seen from the prediction we can say the team to win FiFa 2026 is:</br><span>Spain with 69%</span></h1>
+                                    <div class='text-center'>
+                                        <img src="static\images\Graph.jpg" alt="Team Score Graph"  class='img'>
+                                        <div class='text-border p-2'>
+                                            <h1 class='heading'>As seen from the prediction we can say the team to win FiFa 2026 is:</br><span>{{team_prediction}}</span></h1>
                                             <p class='text-white'>Note the prediction is based on the score given per team based on there previous year win loss ratio and their individal player skill points.
                                                 This does not include human error factor.
                                             </p>
