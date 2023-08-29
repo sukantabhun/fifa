@@ -1,0 +1,1 @@
+web gunicorn fifa.wsgi:application --log-file -
