@@ -30,7 +30,7 @@ The project is organized as follows:
 1. Open a terminal and navigate to the project directory:
 
     ```bash
-    cd C:\Users\Sukanta Bhunia\Downloads\fifa-1.1.2\fifa-1.1.2
+    cd ...\fifa-1.1.2\fifa-1.1.2
     ```
 
 2. Create and activate a virtual environment:
@@ -52,7 +52,7 @@ The project is organized as follows:
 1. Make sure you are in the project root directory:
 
     ```bash
-    cd C:\Users\Sukanta Bhunia\Downloads\fifa-1.1.2\fifa-1.1.2
+    cd ...\fifa-1.1.2\fifa-1.1.2
     ```
 
 2. Run the Django development server:
